@@ -33,8 +33,7 @@ module SpreeSales::BaseHelper
   end
 
   def sale_calculators
-    calculators = SpreeSales::Config[:sale_calculators].map do |calculator|
-      calculator = calculator.constantize
+    calculators = [Spree::Calculator::AmountSalePriceCalculator, Spree::Calculator::PercentOffSalePriceCalculator].map do |calculator|
       [calculator.title, calculator.name]
     end
 
